@@ -56,7 +56,8 @@ Route::get('/create-image-variations', function () {
         $image = ImageVariation::create(['image_id' => request('image_id'), 'filename' => $fileParts['basename']]);
     }
     $imageData = Image::where('id', request('image_id'))->first();
-    return view('edit-image')->with(['image' => $imageData]);
+    return redirect('images'. '/' . $imageData->id . '/' . 'edit');
+    // return view('edit-image')->with(['image' => $imageData]);
 });
 
 Route::post('/', function () {
